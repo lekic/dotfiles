@@ -34,6 +34,7 @@ On a sparkling fresh installation of macOS:
 
 ```bash
 sudo softwareupdate -i -a
+sudo softwareupdate --install-rosetta --agree-to-license
 xcode-select --install
 ```
 

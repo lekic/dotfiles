@@ -19,6 +19,9 @@ fi
 
 PATH="$DOTFILES_DIR/bin:$PATH"
 
+# Fix for Apple Silicon brew install path
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Source the dotfiles (order matters)
 BREW_PREFIX=$(brew --prefix)
 

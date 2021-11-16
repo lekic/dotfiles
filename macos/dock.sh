@@ -2,7 +2,6 @@
 
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Google Chrome.app"
-dockutil --no-restart --add "/Applications/Mimestream.app"
 dockutil --no-restart --add "/System/Applications/Messages.app/"
 dockutil --no-restart --add "/Applications/Discord Canary.app"
 dockutil --no-restart --add "/Applications/Slack.app"
