@@ -5,6 +5,7 @@ tap "homebrew/cask-versions"
 tap "buo/cask-upgrade"
 
 cask "1password"
+cask "apparency"
 cask "burp-suite"
 cask "discord-canary"
 cask "dropbox"

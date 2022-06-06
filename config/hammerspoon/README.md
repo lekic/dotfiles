@@ -6,7 +6,6 @@ The hyper key is defined as `⌘ + ⌥ + ⌃` (control + option + command). Pres
 | --- | ------------------ |
 | A   | Lock Screen        |
 | R   | Reload config      |
-| W   | Print `¯\_(ツ)_/¯` |
 
 ## Launch Apps
 
