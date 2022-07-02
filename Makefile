@@ -52,20 +52,21 @@ unlink: stow-$(OS)
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 
-zsh: ZSH=$(HOMEBREW_PREFIX)/bin/zsh
+zsh: BREW_BIN=$(HOMEBREW_PREFIX)/bin/brew
+zsh: ZSH_BIN=$(HOMEBREW_PREFIX)/bin/bash
 zsh: SHELLS=/private/etc/shells
 zsh: brew
 ifdef GITHUB_ACTION
-	if ! grep -q $(ZSH) $(SHELLS); then \
-		brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
-		sudo append $(ZSH) $(SHELLS) && \
-		sudo chsh -s $(ZSH); \
+	if ! grep -q $(ZSH_BIN) $(SHELLS); then \
+		$(BREW_BIN) install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
+		sudo append $(ZSH_BIN) $(SHELLS) && \
+		sudo chsh -s $(ZSH_BIN); \
 	fi
 else
-	if ! grep -q $(ZSH) $(SHELLS); then \
-		brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
-		sudo append $(ZSH) $(SHELLS) && \
-		chsh -s $(ZSH); \
+	if ! grep -q $(ZSH_BIN) $(SHELLS); then \
+		$(BREW_BIN) install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
+		sudo append $(ZSH_BIN) $(SHELLS) && \
+		chsh -s $(ZSH_BIN); \
 	fi
 endif
 
