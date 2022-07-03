@@ -1,6 +1,7 @@
 [user]
 	name = Daniel Lekic
 	email = daniel@lekic.net
+	signingkey = D3E74353C1681358
 
 [github]
 	user = Lekic
