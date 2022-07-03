@@ -32,6 +32,9 @@
 [fetch]
 	prune = true
 
+[commit]
+	gpgsign = true
+
 [grep]
 	lineNumber = true
 
