@@ -21,7 +21,7 @@ It mainly targets macOS systems, but it works on at least Ubuntu as well.
 - [homebrew-cask](https://github.com/Homebrew/homebrew-cask) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/) (packages: [npmfile](./install/npmfile))
 - [VSCode](https://code.visualstudio.com) (packages: [Codefile](./install/Codefile))
-- Latest Git, Zsh 5, Python 3, GNU coreutils, curl, Ruby
+- Latest Git, Zsh, Python, GNU coreutils, curl, Ruby
 - [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - [Mackup](https://github.com/lra/mackup) (sync application settings)
 - `$EDITOR` (and Git editor) is [Vim](https://www.vim.org/)

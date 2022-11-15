@@ -48,6 +48,10 @@ if is-macos; then
   done
 fi
 
+for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,path}.cba; do
+  [ -f "$DOTFILE" ] && . "$DOTFILE"
+done
+
 # Hook for extra/custom stuff
 
 DOTFILES_EXTRA_DIR="$HOME/.extra"
