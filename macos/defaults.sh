@@ -1,4 +1,26 @@
 COMPUTER_NAME="Lekic-MBP"
+LANGUAGES="en-AU"
+LOCALE="en_AU@currency=AUD"
+MEASUREMENT_UNITS="Centimeters"
+SCREENSHOTS_FOLDER="${HOME}/Desktop"
+
+# Topics
+#
+# - Computer & Host name
+# - Localization
+# - System
+# - Keyboard & Input
+# - Trackpad, mouse, Bluetooth accessories
+# - Screen
+# - Finder
+# - Dock
+# - Mail
+# - Calendar
+# - Photos
+# - Spotlight
+# - Terminal
+# - Activity Monitor
+# - Software Updates
 
 osascript -e 'tell application "System Preferences" to quit'
 
@@ -9,7 +31,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
-# General UI/UX                                                               #
+# Computer & Host name                                                        #
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
@@ -18,17 +40,50 @@ sudo scutil --set HostName "$COMPUTER_NAME"
 sudo scutil --set LocalHostName "$COMPUTER_NAME"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
 
+###############################################################################
+# Localization                                                                #
+###############################################################################
+
 # Set language and text formats
-defaults write NSGlobalDomain AppleLanguages -array "en-AU"
-defaults write NSGlobalDomain AppleLocale -string "en_AU@currency=AUD"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleLanguages -array ${LANGUAGES[@]}
+defaults write NSGlobalDomain AppleLocale -string "$LOCALE"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "$MEASUREMENT_UNITS"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Hide language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool false
 
-# Set the timezone (see `sudo systemsetup -listtimezones` for other values)
-sudo systemsetup -settimezone "Australia/Sydney" > /dev/null
+# Using systemsetup might give Error:-99, can be ignored (commands still work)
+# systemsetup manpage: https://ss64.com/osx/systemsetup.html
+
+# Set the time zone
+sudo defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
+sudo systemsetup -setusingnetworktime on
+
+###############################################################################
+# System                                                                      #
+###############################################################################
+
+# Restart automatically if the computer freezes (Error:-99 can be ignored)
+sudo systemsetup -setrestartfreeze on
+
+# Enable lid wakeup
+sudo pmset -a lidwake 1
+
+# Restart automatically on power loss
+sudo pmset -a autorestart 1
+
+# Sleep the display after 15 minutes
+sudo pmset -a displaysleep 15
+
+# Disable machine sleep while charging
+sudo pmset -c sleep 0
+
+# Set machine sleep to 30 minutes on battery
+sudo pmset -b sleep 30
+
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -53,6 +108,7 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
+sudo nvram StartupMute=%01
 
 # Menu bar: show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent YES
@@ -70,12 +126,6 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# Automatically quit printer app once the print jobs complete
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -148,47 +198,6 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 ###############################################################################
-# Energy saving                                                               #
-###############################################################################
-
-# Enable lid wakeup
-sudo pmset -a lidwake 1
-
-# Restart automatically on power loss
-sudo pmset -a autorestart 1
-
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
-
-# Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
-
-# Disable machine sleep while charging
-sudo pmset -c sleep 0
-
-# Set machine sleep to 30 minutes on battery
-sudo pmset -b sleep 30
-
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
-
-# Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
-
-# Hibernation mode
-# 0: Disable hibernation (speeds up entering sleep mode)
-# 3: Copy RAM to disk so the system state can still be restored in case of a
-#    power failure.
-sudo pmset -a hibernatemode 3
-
-# Remove the sleep image file to save disk space
-# sudo rm /private/var/vm/sleepimage
-# Create a zero-byte file instead…
-# sudo touch /private/var/vm/sleepimage
-# …and make sure it can’t be rewritten
-# sudo chflags uchg /private/var/vm/sleepimage
-
-###############################################################################
 # Screen                                                                      #
 ###############################################################################
 
@@ -197,7 +206,8 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+mkdir -p "${SCREENSHOTS_FOLDER}"
+defaults write com.apple.screencapture location -string "${SCREENSHOTS_FOLDER}"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -379,8 +389,6 @@ defaults write com.apple.dock wvous-br-corner -int 0
 # Don't show recently used applications in the Dock
 defaults write com.Apple.Dock show-recents -bool false
 
-
-
 ###############################################################################
 # Mail                                                                        #
 ###############################################################################
@@ -431,6 +439,13 @@ defaults write com.apple.iCal "Show Week Numbers" -bool true
 defaults write com.apple.iCal "first day of week" -int 1
 
 ###############################################################################
+# Photos                                                                      #
+###############################################################################
+
+# Prevent Photos from opening automatically when devices are plugged in
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
 
@@ -441,7 +456,7 @@ defaults write com.apple.iCal "first day of week" -int 1
   "Set AppleSymbolicHotKeys:64:enabled false"
 
 ###############################################################################
-# Terminal & iTerm 2                                                          #
+# Terminal                                                                    #
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
@@ -458,9 +473,6 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 # Install the Solarized Dark theme for iTerm
 # open "${HOME}/init/Solarized Dark.itermcolors"
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -486,8 +498,8 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 # Enable the automatic update check
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
-# Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -bool true
+# Check for software updates weekly (`dot update` includes software updates)
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -string 7
 
 # Download newly available updates in background
 defaults write com.apple.SoftwareUpdate AutomaticDownload -bool true
@@ -500,13 +512,6 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 # Allow the App Store to reboot machine on macOS updates
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
-
-###############################################################################
-# Photos                                                                      #
-###############################################################################
-
-# Prevent Photos from opening automatically when devices are plugged in
-defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 ###############################################################################
 # Kill affected applications                                                  #
