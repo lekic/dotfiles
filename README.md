@@ -44,7 +44,7 @@ The Xcode Command Line Tools includes `git` and `make` (not available on stock m
 bash -c "`curl -fsSL https://raw.githubusercontent.com/Lekic/dotfiles/master/remote-install.sh`"
 ```
 
-This will clone or download, this repo to `~/.dotfiles` depending on the availability of `git`, `curl` or `wget`.
+This will clone or download this repo to `~/.dotfiles` (depending on the availability of `git`, `curl` or `wget`).
 
 1. Alternatively, clone manually into the desired location:
 
@@ -52,8 +52,7 @@ This will clone or download, this repo to `~/.dotfiles` depending on the availab
 git clone https://github.com/Lekic/dotfiles.git ~/.dotfiles
 ```
 
-Use the [Makefile](./Makefile) to install everything [listed above](#package-overview), and symlink [runcom](./runcom)
-and [config](./config) (using [stow](https://www.gnu.org/software/stow/)):
+Use the [Makefile](./Makefile) to install the [packages listed above](#packages-overview), and symlink [runcom](./runcom) and [config](./config) files (using [stow](https://www.gnu.org/software/stow/)):
 
 ```bash
 cd ~/.dotfiles
