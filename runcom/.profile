@@ -26,7 +26,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 BREW_PREFIX=$(brew --prefix)
 
 # for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,fnm,grep,prompt,completion,fix,custom}; do
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,exports,alias,fnm,grep,fix,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,exports,alias,fnm,grep,fix,zoxide,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
