@@ -85,6 +85,12 @@ sudo pmset -b sleep 30
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
+# Set Dark Mode
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+# Disable wallpaper tinting
+defaults write NSGlobalDomain AppleReduceDesktopTinting -bool true
+
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
