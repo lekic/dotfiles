@@ -1,7 +1,7 @@
 [user]
 	name = Daniel Lekic
 	email = daniel@lekic.net
-	signingkey = D3E74353C1681358
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDv5rRGbBxXQHAOTw2PCQu/Z2NaU0Tc1JTJzMN6UAmr9
 
 [github]
 	user = Lekic
@@ -34,6 +34,12 @@
 
 [commit]
 	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 [grep]
 	lineNumber = true
@@ -75,7 +81,7 @@
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool "sourcetree"]
 	cmd = ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 
 [merge]
 	tool = Kaleidoscope
