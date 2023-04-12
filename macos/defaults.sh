@@ -377,7 +377,7 @@ defaults write com.apple.dock launchanim -bool false
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # Group windows by application in Mission Control
-defaults write com.apple.dock expose-group-by-app -bool true
+defaults write com.apple.dock expose-group-apps -bool true
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
