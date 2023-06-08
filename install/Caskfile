@@ -33,13 +33,3 @@ cask "sublime-text"
 cask "visual-studio-code"
 cask "vlc"
 cask "vmware-fusion"
-
-# Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-cask "qlcolorcode"
-cask "qlstephen"
-cask "qlmarkdown"
-cask "quicklook-json"
-cask "qlimagesize"
-cask "suspicious-package"
-cask "quicklookase"
-cask "qlvideo"
