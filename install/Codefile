@@ -1,17 +1,18 @@
 adpyke.codesnap
 amazonwebservices.aws-toolkit-vscode
-byCedric.vscode-expo
+bierner.markdown-preview-github-styles
+charliermarsh.ruff
 dbaeumer.vscode-eslint
-dsznajder.es7-react-js-snippets
 eamodio.gitlens
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 hediet.vscode-drawio
+ms-azuretools.vscode-docker
 ms-python.python
+ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 msjsdiag.vscode-react-native
-NativeBase.nativebase-v3-vscode-extension
 naumovs.color-highlight
 redhat.vscode-yaml
 ritwickdey.LiveServer
@@ -20,5 +21,4 @@ stkb.rewrap
 vincaslt.highlight-matching-tag
 VisualStudioExptTeam.vscodeintellicode
 vscode-icons-team.vscode-icons
-WallabyJs.quokka-vscode
 zhuangtongfa.material-theme
