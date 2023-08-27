@@ -20,7 +20,7 @@ jobs:
           # brew uninstall --cask --force $(brew list --cask)
           brew uninstall --cask --force firefox google-chrome
           brew cleanup --prune-prefix
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 
       - name: Download and install available system updates
         # Step disabled since it also tries to update macOS itself and there seems no way to disable this
