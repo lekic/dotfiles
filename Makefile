@@ -13,7 +13,7 @@ export ACCEPT_EULA=Y
 
 all: $(OS)
 
-macos: sudo core-macos packages link
+macos: sudo core-macos packages link duti
 
 linux: core-linux link
 
@@ -94,6 +94,9 @@ node-packages: npm
 
 rust-packages: rust
 	$(BIN)/cargo install $(shell cat install/Rustfile)
+
+duti:
+	duti -v $(DOTFILES_DIR)/install/duti
 
 test:
 	eval $$(fnm env); bats test
