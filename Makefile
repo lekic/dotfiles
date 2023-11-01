@@ -1,8 +1,8 @@
 SHELL = /bin/bash
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-PATH := $(DOTFILES_DIR)/bin:$(PATH)
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
+PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(PATH)
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
@@ -17,7 +17,7 @@ macos: sudo core-macos packages link duti
 
 linux: core-linux link
 
-core-macos: brew zsh git npm ruby rust
+core-macos: brew zsh git npm
 
 core-linux:
 	apt-get update
@@ -36,18 +36,18 @@ ifndef GITHUB_ACTION
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 endif
 
-packages: brew-packages cask-apps node-packages rust-packages
+packages: brew-packages cask-apps node-packages rust-packages vscode-extensions
 
 link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p $(XDG_CONFIG_HOME)
-	$(BIN)/stow -t $(HOME) runcom
-	$(BIN)/stow -t $(XDG_CONFIG_HOME) config
+	stow -t $(HOME) runcom
+	stow -t $(XDG_CONFIG_HOME) config
 
 unlink: stow-$(OS)
-	$(BIN)/stow --delete -t $(HOME) runcom
-	$(BIN)/stow --delete -t $(XDG_CONFIG_HOME) config
+	stow --delete -t $(HOME) runcom
+	stow --delete -t $(XDG_CONFIG_HOME) config
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
@@ -56,46 +56,42 @@ brew:
 
 zsh: brew
 ifdef GITHUB_ACTION
-	if ! grep -q $(BIN)/zsh $(SHELLS); then \
-		$(BIN)/brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
-		sudo append $(BIN)/zsh $(SHELLS) && \
-		sudo chsh -s $(BIN)/zsh; \
+	if ! grep -q zsh $(SHELLS); then \
+		brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
+		sudo append zsh $(SHELLS) && \
+		sudo chsh -s zsh; \
 	fi
 else
-	if ! grep -q $(BIN)/zsh $(SHELLS); then \
-		$(BIN)/brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
-		sudo append $(BIN)/zsh $(SHELLS) && \
-		chsh -s $(BIN)/zsh; \
+	if ! grep -q zsh $(SHELLS); then \
+		brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
+		sudo append zsh $(SHELLS) && \
+		chsh -s zsh; \
 	fi
 endif
 
 git: brew
-	$(BIN)/brew install git git-extras
+	brew install git git-extras
 
 npm: brew-packages
-	$(BIN)/fnm install --lts
-
-ruby: brew
-	$(BIN)/brew install ruby
-
-rust: brew
-	$(BIN)/brew install rust
+	fnm install --lts
 
 brew-packages: brew
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
+	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
 
 cask-apps: brew
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
+	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+
+vscode-extensions: cask-apps
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
 node-packages: npm
 	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
 
-rust-packages: rust
-	$(BIN)/cargo install $(shell cat install/Rustfile)
+rust-packages: brew-packages
+	cargo install $(shell cat install/Rustfile)
 
-duti:
+duti: brew-packages
 	duti -v $(DOTFILES_DIR)/install/duti
 
 test:
