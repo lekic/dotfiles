@@ -23,7 +23,6 @@ prepend-path "$HOME/.cargo/bin"
 prepend-path "$HOME/.local/bin"
 prepend-path "$HOME/.local/share/fnm"
 
-
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
 
