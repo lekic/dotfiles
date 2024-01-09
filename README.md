@@ -64,12 +64,35 @@ Running `make` with the Makefile is idempotent. The installation process in the 
 
 ## Post-Installation
 
-- `dot dock` (set [Dock items](./macos/dock.sh))
-- `dot macos` (set [macOS defaults](./macos/defaults.sh))
-- Mackup
-  - Log in to iCloud (and wait until synced)
-  - `cd && ln -s ~/.config/mackup/.mackup.cfg ~`
-  - `mackup restore`
+1. Set your Git credentials:
+
+```sh
+git config --global user.name "your name"
+git config --global user.email "your@email.com"
+git config --global github.user "your-github-username"
+```
+
+2. Set macOS [Dock items](./macos/dock.sh) and [system defaults](./macos/defaults.sh):
+
+```sh
+dot dock
+dot macos
+```
+
+3. Start Hammerspoon once and set "Launch Hammerspoon at login".
+
+4. For Mackup, login to iCloud and wait for it to sync, the run the following.
+
+```sh
+cd && ln -s ~/.config/mackup/.mackup.cfg ~
+mackup restore
+```
+
+4. Populate this file with tokens (example: `export GITHUB_TOKEN=abc`):
+
+```sh
+touch ~/.dotfiles/system/.exports
+```
 
 ## The `dot` command
 
