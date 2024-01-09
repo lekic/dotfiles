@@ -80,7 +80,7 @@ Usage: dot <command>
 Commands:
    clean            Clean up caches (brew, npm, gem, rvm)
    dock             Apply macOS Dock settings
-   edit             Open dotfiles in IDE ($VISUAL) and Git GUI ($VISUAL_GIT)
+   edit             Open dotfiles in IDE ($VISUAL)
    help             This help message
    macos            Apply macOS system defaults
    test             Run tests

@@ -8,7 +8,6 @@ function cdf() {
 
 d() {
   $VISUAL ${1:-.}
-  $VISUAL_GIT ${1:-.}
 }
 
 # Open man page as PDF

@@ -12,7 +12,6 @@ end
 hs.hotkey.bind(mash, "c", function() toggleApplication("Google Chrome") end)
 hs.hotkey.bind(mash, "e", function() toggleApplication("Visual Studio Code") end)
 hs.hotkey.bind(mash, "f", function() toggleApplication("Finder") end)
-hs.hotkey.bind(mash, "g", function() toggleApplication("SourceTree") end)
 hs.hotkey.bind(mash, "m", function() toggleApplication("Mail") end)
 hs.hotkey.bind(mash, "p", function() toggleApplication("System Preferences") end)
 hs.hotkey.bind(mash, "s", function() toggleApplication("Spotify") end)
