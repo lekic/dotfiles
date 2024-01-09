@@ -4,7 +4,7 @@
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDv5rRGbBxXQHAOTw2PCQu/Z2NaU0Tc1JTJzMN6UAmr9
 
 [github]
-	user = Lekic
+	user = lekic
 
 [core]
 	excludesfile = ~/.config/git/ignore

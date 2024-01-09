@@ -12,7 +12,7 @@ It mainly targets macOS systems (should install on Ubuntu as well for many tools
 - Fast and colored prompt
 - Updated macOS defaults
 - Well-organized and easy to customize
-- The installation and runcom setup is [tested weekly on real Ubuntu and macOS machines](https://github.com/webpro/dotfiles/actions) (Big Sur/11, Monterey/12, Ventura/13) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
+- The installation and runcom setup is [tested weekly on real Ubuntu and macOS machines](https://github.com/lekic/dotfiles/actions) (Monterey/12, Ventura/13) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
 - Supports both Apple Silicon (M1) and Intel chips
 
 ## Packages Overview
@@ -41,7 +41,7 @@ The Xcode Command Line Tools includes `git` and `make` (not available on stock m
 1. Install this repo with `curl` available:
 
 ```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/Lekic/dotfiles/main/remote-install.sh`"
+bash -c "`curl -fsSL https://raw.githubusercontent.com/lekic/dotfiles/main/remote-install.sh`"
 ```
 
 This will clone or download this repo to `~/.dotfiles` (depending on the availability of `git`, `curl` or `wget`).
@@ -49,18 +49,18 @@ This will clone or download this repo to `~/.dotfiles` (depending on the availab
 1. Alternatively, clone manually into the desired location:
 
 ```bash
-git clone https://github.com/Lekic/dotfiles.git ~/.dotfiles
+git clone https://github.com/lekic/dotfiles.git ~/.dotfiles
 ```
 
-Use the [Makefile](./Makefile) to install the [packages listed above](#packages-overview), and symlink [runcom](./runcom) and [config](./config) files (using [stow](https://www.gnu.org/software/stow/)):
+2. Use the [Makefile](./Makefile) to install the [packages listed above](#packages-overview), and symlink [runcom](./runcom) and [config](./config) files (using [stow](https://www.gnu.org/software/stow/)):
 
 ```bash
 cd ~/.dotfiles
 make
 ```
 
-The installation process in the Makefile is tested on every push and every week in this
-[GitHub Action](https://github.com/Lekic/dotfiles/actions).
+Running `make` with the Makefile is idempotent. The installation process in the Makefile is tested on every push and every week in this
+[GitHub Action](https://github.com/lekic/dotfiles/actions). Please file an issue in this repo if there are errors.
 
 ## Post-Installation
 
@@ -71,7 +71,7 @@ The installation process in the Makefile is tested on every push and every week 
   - `cd && ln -s ~/.config/mackup/.mackup.cfg ~`
   - `mackup restore`
 
-## The `dotfiles` command
+## The `dot` command
 
 ```bash
 $ dot help
