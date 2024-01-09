@@ -7,7 +7,7 @@ expo-cli
 local-web-server
 lodash
 npm
-npm-check-update
+npm-check-updates
 prettier
 release-it
 request
