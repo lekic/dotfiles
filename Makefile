@@ -1,8 +1,8 @@
-SHELL = /bin/bash
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
 PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(PATH)
+SHELL := env PATH=$(PATH) /bin/bash
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
