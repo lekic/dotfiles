@@ -89,6 +89,9 @@
 [mergetool]
 	prompt = false
 
+[interactive]
+    diffFilter = delta --color-only
+
 [delta]
   navigate = true
 	light = false
