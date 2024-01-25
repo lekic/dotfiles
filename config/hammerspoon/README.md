@@ -36,5 +36,5 @@ The hyper key is defined as `⌘ + ⌥ + ⌃` (control + option + command). Pres
 | 4       | Set 4x4 grid      |
 | /       | To next screen    |
 | ,       | Snap to grid      |
-| (space) | Maximize window   |
-| .       | Minimize window   |
+| (space) | Maximise window   |
+| .       | Minimise window   |

@@ -1,6 +1,8 @@
 tap "hashicorp/tap"
 tap "lotyp/homebrew-formulae"
 
+brew "act"
+brew "aspell"
 brew "awscli"
 brew "bat"
 brew "bats-core"
