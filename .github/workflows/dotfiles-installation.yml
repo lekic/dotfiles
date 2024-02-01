@@ -2,7 +2,11 @@ name: Dotfiles Installation
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
   schedule:
     - cron: "0 17 * * 4" # Every Thursday 5:00PM
 
