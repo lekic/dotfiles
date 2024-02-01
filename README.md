@@ -1,5 +1,9 @@
 # dotfiles
 
+![Dotfiles Install](https://github.com/lekic/dotfiles/actions/workflows/dotfiles-installation.yml/badge.svg)
+![Markdown Link Checker](https://github.com/lekic/dotfiles/actions/workflows/markdown-link-checker.yml/badge.svg)
+![Spellcheck](https://github.com/lekic/dotfiles/actions/workflows/spellcheck.yml/badge.svg)
+
 These are my dotfiles. Take anything you want, but at your own risk.
 
 It mainly targets macOS systems (should install on Ubuntu as well for many tools, config and aliases etc).
