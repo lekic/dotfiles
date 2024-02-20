@@ -2,6 +2,7 @@ adpyke.codesnap
 bierner.github-markdown-preview
 charliermarsh.ruff
 dbaeumer.vscode-eslint
+davidanson.vscode-markdownlint
 donjayamanne.python-environment-manager
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
@@ -9,7 +10,6 @@ GitHub.github-vscode-theme
 github.vscode-github-actions
 hediet.vscode-drawio
 ms-azuretools.vscode-docker
-ms-python.black-formatter
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
