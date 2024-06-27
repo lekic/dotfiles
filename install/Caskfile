@@ -1,4 +1,3 @@
-tap "homebrew/cask-fonts"
 tap "buo/cask-upgrade"
 
 cask "1password"
@@ -18,6 +17,7 @@ cask "handbrake"
 cask "hazel"
 cask "hiddenbar"
 cask "microsoft-office"
+cask "openvpn-connect"
 cask "postman"
 cask "powershell"
 cask "raycast"

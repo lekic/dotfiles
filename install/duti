@@ -54,7 +54,6 @@ com.microsoft.VSCode .txt editor
 com.microsoft.VSCode .vue editor
 com.microsoft.VSCode .yaml editor
 com.microsoft.VSCode .yml editor
-com.microsoft.VSCode .zoxide editor
 com.microsoft.VSCode Brewfile editor
 com.microsoft.VSCode Caskfile editor
 com.microsoft.VSCode Codefile editor
