@@ -10,6 +10,7 @@ sub_help () {
   echo "Commands:"
   echo "   clean            Clean up caches (brew, cargo, gem, pip)"
   echo "   dock             Apply macOS Dock settings"
+  echo "   duti             Reload duti settings"
   echo "   edit             Open dotfiles in IDE ($VISUAL)"
   echo "   help             This help message"
   echo "   macos            Apply macOS system defaults"
@@ -30,6 +31,10 @@ sub_clean () {
 
 sub_dock () {
   . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
+}
+
+sub_duti () {
+  duti -v "${DOTFILES_DIR}/install/duti"
 }
 
 sub_edit () {

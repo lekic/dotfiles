@@ -22,6 +22,7 @@ com.microsoft.VSCode .function_fs editor
 com.microsoft.VSCode .function_network editor
 com.microsoft.VSCode .function_text editor
 com.microsoft.VSCode .gitignore editor
+com.microsoft.VSCode .graphql editor
 com.microsoft.VSCode .grep editor
 com.microsoft.VSCode .ignore editor
 com.microsoft.VSCode .ini editor
@@ -57,6 +58,7 @@ com.microsoft.VSCode .yml editor
 com.microsoft.VSCode Brewfile editor
 com.microsoft.VSCode Caskfile editor
 com.microsoft.VSCode Codefile editor
+com.microsoft.VSCode Dockerfile editor
 com.microsoft.VSCode Makefile editor
 com.microsoft.VSCode npmfile editor
 org.videolan.vlc .3gp all
