@@ -12,6 +12,7 @@ com.microsoft.VSCode .conf editor
 com.microsoft.VSCode .config editor
 com.microsoft.VSCode .css editor
 com.microsoft.VSCode .csv editor
+com.microsoft.VSCode .cts editor
 com.microsoft.VSCode .dir_colors editor
 com.microsoft.VSCode .drawio editor
 com.microsoft.VSCode .env editor
@@ -39,6 +40,7 @@ com.microsoft.VSCode .map editor
 com.microsoft.VSCode .md editor
 com.microsoft.VSCode .mdx editor
 com.microsoft.VSCode .mjs editor
+com.microsoft.VSCode .mts editor
 com.microsoft.VSCode .n editor
 com.microsoft.VSCode .path editor
 com.microsoft.VSCode .prettierignore editor
@@ -47,6 +49,7 @@ com.microsoft.VSCode .prompt editor
 com.microsoft.VSCode .sh editor
 com.microsoft.VSCode .snap editor
 com.microsoft.VSCode .svelte editor
+com.microsoft.VSCode .svg editor
 com.microsoft.VSCode .toml editor
 com.microsoft.VSCode .ts editor
 com.microsoft.VSCode .tsv editor
