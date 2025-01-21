@@ -10,8 +10,8 @@ npm
 npm-check-updates
 prettier
 release-it
+remark-cli
 request
-serverless
 svgo
 tldr
 underscore-cli
