@@ -1,5 +1,4 @@
 name: Dotfiles Installation
-
 on:
   push:
     branches:
@@ -9,13 +8,12 @@ on:
       - main
   schedule:
     - cron: "0 17 * * 4" # Every Thursday 5:00PM
-
 jobs:
   install:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13, macos-14]
+        os: [macos-13, macos-14, macos-15]
 
     steps:
       - name: Clean up installed software
@@ -26,15 +24,12 @@ jobs:
           brew uninstall --cask --force firefox google-chrome
           brew cleanup --prune-prefix
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
-
       - name: Download and install available system updates
         # Step disabled since it also tries to update macOS itself and there seems no way to disable this
         if: ${{ false && startsWith(matrix.os, 'macos') }}
         run: sudo softwareupdate -i -a
-
       - name: Clone this repository
         uses: actions/checkout@v4
-
       - name: Install using Makefile
         run: |
           if [ "$RUNNER_OS" == "macOS" ]; then
@@ -42,10 +37,8 @@ jobs:
           else
             sudo make
           fi
-
       - name: Load & verify runcom setup
         run: source $HOME/.profile
-
       - name: Run tests
         if: startsWith(matrix.os, 'macos')
         run: make test

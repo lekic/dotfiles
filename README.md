@@ -16,7 +16,7 @@ It mainly targets macOS systems (should install on Ubuntu as well for many tools
 - Fast and coloured prompt
 - Updated macOS defaults
 - Well-organised and easy to customise
-- The installation and runcom setup is [tested weekly on real Ubuntu and macOS machines](https://github.com/lekic/dotfiles/actions) (Monterey/12 and Ventura/13) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
+- The installation and runcom setup is [tested weekly on real Ubuntu and macOS machines](https://github.com/lekic/dotfiles/actions) (Ventura/13, Sonomo/14, Sequoia/15) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
 - Supports both Apple Silicon (M1) and Intel chips
 
 ## Packages Overview
