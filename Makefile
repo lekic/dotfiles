@@ -60,13 +60,13 @@ zsh: brew
 ifdef GITHUB_ACTION
 	if ! grep -q zsh $(SHELLS); then \
 		brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
-		sudo append $(shell which zsh) $(SHELLS) && \
+		echo $(shell which bash) | sudo tee -a $(SHELLS) && \
 		sudo chsh -s zsh; \
 	fi
 else
 	if ! grep -q zsh $(SHELLS); then \
 		brew install bash bash-completion@2 pcre zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting z && \
-		sudo append $(shell which zsh) $(SHELLS) && \
+		echo $(shell which bash) | sudo tee -a $(SHELLS) && \
 		chsh -s zsh; \
 	fi
 endif
