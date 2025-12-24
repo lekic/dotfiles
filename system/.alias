@@ -1,15 +1,10 @@
 # Shortcuts
 
-alias reload="source ~/.bash_profile"
+alias reload="source ~/.profile"
 alias _="sudo"
 alias g="git"
 alias rr="rm -rf"
 alias mux="tmuxinator"
-
-# Default options
-
-alias rsync="rsync -vh"
-alias json="json -c"
 
 # Global aliases
 
@@ -48,24 +43,21 @@ alias .....="cd ../../../.."
 alias -- -="cd -"                  # Go to previous dir with -
 alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is linked)
 
-# npm
+# p/npm
 
-alias ni="npm install"
-alias nu="npm uninstall"
-alias nup="npm update"
-alias nri="rm -r node_modules && npm install"
+alias b="bun"
+alias p="pnpm"
 alias ncu="npm-check-updates --interactive"
 alias ncuw="npm-check-updates --interactive --root --workspaces"
 
 # Network
 
-alias ip="curl -s ipinfo.io | jq -r '.ip'"
-alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+alias ipp="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ipl="ip route get 1.1.1.1 2>/dev/null | awk 'NR==1{print \$7}'"
 
 # Miscellaneous
 
 alias hosts="sudo $EDITOR /etc/hosts"
 alias quit="exit"
 alias week="date +%V"
-alias grip="grip -b"
 alias fkill="ps -e | fzf | awk '{print $1}' | xargs kill"

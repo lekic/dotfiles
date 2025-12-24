@@ -2,10 +2,13 @@
 
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
+# Get local IP address
+
+alias ipl="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print \$2}' | head -1"
+
 # Shortcuts
 
 alias chrome="open -a /Applications/Google\ Chrome.app"
-alias canary="open -a /Applications/Google\ Chrome\ Canary.app"
 
 # Exclude macOS specific files in ZIP archives
 
@@ -26,11 +29,6 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 # Log off
 
 alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
-# Show/hide desktop icons
-
-alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killfinder"
-alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killfinder"
 
 # Recursively remove Apple meta files
 
@@ -61,6 +59,3 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias displays="system_profiler SPDisplaysDataType"
 alias cpu="sysctl -n machdep.cpu.brand_string"
 alias ram="top -l 1 -s 0 | grep PhysMem"
-
-alias pbtext="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy"
-alias pbspaces="pbpaste | expand | pbcopy"

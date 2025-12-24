@@ -10,6 +10,8 @@ if [[ -n $CURRENT_SCRIPT && -x readlink ]]; then
   DOTFILES_DIR="${PWD}/$(dirname $(dirname $SCRIPT_PATH))"
 elif [ -d "$HOME/.dotfiles" ]; then
   DOTFILES_DIR="$HOME/.dotfiles"
+elif [ -d "$HOME/dotfiles" ]; then
+  DOTFILES_DIR="$HOME/dotfiles"
 else
   echo "Unable to find dotfiles, exiting."
   return
@@ -25,8 +27,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Source the dotfiles (order matters)
 BREW_PREFIX=$(brew --prefix)
 
-# for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,fnm,grep,prompt,completion,fix,custom}; do
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,exports,alias,fnm,grep,custom}; do
+[ -f "$DOTFILES_DIR/system/.exports" ] && . "$DOTFILES_DIR/system/.exports"
+
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,alias,grep,pnpm,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
@@ -61,6 +64,10 @@ if [ -d "$DOTFILES_EXTRA_DIR" ]; then
     [ -f "$EXTRAFILE" ] && . "$EXTRAFILE"
   done
 fi
+
+# Set LSCOLORS
+
+eval "$(dircolors -b "$DOTFILES_DIR"/system/.dir_colors)"
 
 # Clean up
 

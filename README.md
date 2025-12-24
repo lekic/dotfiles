@@ -6,7 +6,7 @@
 
 These are my dotfiles. Take anything you want, but at your own risk.
 
-It mainly targets macOS systems (should install on Ubuntu as well for many tools, config and aliases etc).
+Mainly targets macOS systems, but works on Ubuntu and Arch Linux as well.
 
 ## Highlights
 
@@ -28,7 +28,7 @@ It mainly targets macOS systems (should install on Ubuntu as well for many tools
 - Latest Git, Zsh, Python, GNU coreutils, curl, Ruby
 - [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - [Mackup](https://github.com/lra/mackup) (sync application settings)
-- `$EDITOR` (and Git editor) is [Vim](https://www.vim.org/)
+- Editors: VS Code and vim (`EDITOR`, `VISUAL` and Git `core.editor`)
 
 ## Installation
 
@@ -116,19 +116,9 @@ Commands:
 
 ## Customise
 
-You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from
-`.profile` automatically. This file is in `.gitignore`.
+You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.profile` automatically. This file is in `.gitignore`.
 
-Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`. The runcom `.profile` sources all
-`~/.extra/runcom/*.sh` files.
-
-## Additional Resources
-
-- [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
-- [Homebrew](https://brew.sh)
-- [Homebrew Cask](https://github.com/Homebrew/homebrew-cask)
-- [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
-- [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
+Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`. The runcom `.profile` sources all `~/.extra/runcom/*.sh` files.
 
 ## Credits
 

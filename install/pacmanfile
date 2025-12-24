@@ -1,0 +1,15 @@
+acl
+base-devel
+bash-completion
+curl
+fd
+fzf
+git
+git-delta
+nfs-utils
+openbsd-netcat
+rsync
+sudo
+tree
+unzip
+wget

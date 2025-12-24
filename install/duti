@@ -25,7 +25,6 @@ com.microsoft.VSCode .function_text editor
 com.microsoft.VSCode .gitignore editor
 com.microsoft.VSCode .graphql editor
 com.microsoft.VSCode .grep editor
-com.microsoft.VSCode .ignore editor
 com.microsoft.VSCode .ini editor
 com.microsoft.VSCode .inputrc editor
 com.microsoft.VSCode .js editor
